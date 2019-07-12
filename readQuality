@@ -1,0 +1,59 @@
+#!/bin/bash
+
+wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR293/005/ERR2930315/ERR2930315.fastq.gz ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR293/006/ERR2930316/ERR2930316.fastq.gz  ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR293/007/ERR2930317/ERR2930317.fastq.gz ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR293/008/ERR2930318/ERR2930318.fastq.gz ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR293/009/ERR2930319/ERR2930319.fastq.gz ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR293/000/ERR2930320/ERR2930320.fastq.gz 
+
+gunzip *.gz
+
+
+fastqc ERR2930315.fastq ERR2930316.fastq ERR2930317.fastq ERR2930318.fastq ERR2930319.fastq ERR2930320.fastq --extract
+
+grep "Filename"* ERR2930315_fastqc/fastqc_data.txt > table.csv
+grep "Total Sequences"* ERR2930315_fastqc/fastqc_data.txt >> table.csv
+grep "Sequence length"* ERR2930315_fastqc/fastqc_data.txt >> table.csv
+awk 'BEGIN {FS="\t"}{print \$2 > "table.csv"}' table.csv
+awk 'BEGIN {ORS=" "}{print > "table2.csv"}' table.csv
+echo \ >> table2.csv
+
+
+grep "Filename"* ERR2930316_fastqc/fastqc_data.txt > table.csv
+grep "Total Sequences"* ERR2930316_fastqc/fastqc_data.txt >> table.csv
+grep "Sequence length"* ERR2930316_fastqc/fastqc_data.txt >> table.csv
+awk 'BEGIN {FS="\t"}{print \$2 >"table.csv"}' table.csv
+awk 'BEGIN {ORS=" "}{print  >> "table2.csv"}' table.csv
+echo \ >> table2.csv
+
+grep "Filename"* ERR2930317_fastqc/fastqc_data.txt > table.csv
+grep "Total Sequences"* ERR2930317_fastqc/fastqc_data.txt >> table.csv
+grep "Sequence length"* ERR2930317_fastqc/fastqc_data.txt >> table.csv
+awk 'BEGIN {FS="\t"}{print \$2 >"table.csv"}' table.csv
+awk 'BEGIN {ORS=" "}{print >> "table2.csv"}' table.csv
+echo \ >> table2.csv
+grep "Filename"* ERR2930318_fastqc/fastqc_data.txt > table.csv
+grep "Total Sequences"* ERR2930318_fastqc/fastqc_data.txt >> table.csv
+grep "Sequence length"* ERR2930318_fastqc/fastqc_data.txt >> table.csv
+awk 'BEGIN {FS="\t"}{print \$2 >"table.csv"}' table.csv
+awk 'BEGIN {ORS=" "}{print >> "table2.csv"}' table.csv
+echo \ >> table2.csv
+
+grep "Filename"* ERR2930319_fastqc/fastqc_data.txt > table.csv
+grep "Total Sequences"* ERR2930319_fastqc/fastqc_data.txt >> table.csv
+grep "Sequence length"* ERR2930319_fastqc/fastqc_data.txt >> table.csv
+awk 'BEGIN {FS="\t"}{print \$2 >"table.csv"}' table.csv
+awk 'BEGIN {ORS=" "}{print >> "table2.csv"}' table.csv
+echo \ >> table2.csv
+
+grep "Filename"* ERR2930320_fastqc/fastqc_data.txt >> table.csv
+grep "Total Sequences"* ERR2930320_fastqc/fastqc_data.txt >> table.csv
+grep "Sequence length"* ERR2930320_fastqc/fastqc_data.txt >> table.csv
+awk 'BEGIN {FS="\t"}{print \$2 >"table.csv"}' table.csv
+awk 'BEGIN {ORS=" "}{print >> "table2.csv"}' table.csv
+sed -e 's/^[[:space:]]*//' table2.csv >> final.csv
+
+rm table2.csv
+rm table.csv
+
+
+
+  
+
+

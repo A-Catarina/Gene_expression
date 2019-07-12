@@ -1,0 +1,31 @@
+#!/bin/bash
+
+#./read_count
+
+#wget https://www.ebi.ac.uk/gxa/experiments-content/E-MTAB-7438/resources/DifferentialSecondaryDataFiles.RnaSeq/raw-counts 
+
+R --vanilla << EOF
+
+raw = read.table("raw-counts", sep="\t", header=T)
+
+raw=raw[,-2] 
+
+raw=raw[, c(1,7,3,2,6,5,4)]
+rownames(raw)=raw[,1]
+raw=raw[,-1]
+results=read.table("read_counts_results.tsv", sep="\t", header=TRUE)
+
+
+cor15=cor(raw[,1], results[,1], method="pearson")
+cor16=cor(raw[,2], results[,2], method="pearson")
+cor17=cor(raw[,3], results[,3], method="pearson")
+cor18=cor(raw[,4], results[,4], method="pearson")
+cor19=cor(raw[,5], results[,5], method="pearson")
+cor20=cor(raw[,6], results[,6], method="pearson")
+
+mean(cor15, cor16, cor17, cor17, cor18, cor19, cor20)
+
+
+EOF
+
+

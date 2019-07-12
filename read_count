@@ -1,0 +1,92 @@
+#!/bin/bash
+
+##Download and unzip of the genome and annotation files for Rattus Norvegicus
+wget ftp://ftp.ensembl.org/pub/release-96/gtf/rattus_norvegicus/Rattus_norvegicus.Rnor_6.0.96.gtf.gz ftp://ftp.ensembl.org/pub/release-96/fasta/rattus_norvegicus/dna/Rattus_norvegicus.Rnor_6.0.dna.chromosome.1.fa.gz ftp://ftp.ensembl.org/pub/release-96/fasta/rattus_norvegicus/dna/Rattus_norvegicus.Rnor_6.0.dna.chromosome.2.fa.gz  ftp://ftp.ensembl.org/pub/release-96/fasta/rattus_norvegicus/dna/Rattus_norvegicus.Rnor_6.0.dna.chromosome.3.fa.gz ftp://ftp.ensembl.org/pub/release-96/fasta/rattus_norvegicus/dna/Rattus_norvegicus.Rnor_6.0.dna.chromosome.4.fa.gz ftp://ftp.ensembl.org/pub/release-96/fasta/rattus_norvegicus/dna/Rattus_norvegicus.Rnor_6.0.dna.chromosome.5.fa.gz ftp://ftp.ensembl.org/pub/release-96/fasta/rattus_norvegicus/dna/Rattus_norvegicus.Rnor_6.0.dna.chromosome.6.fa.gz ftp://ftp.ensembl.org/pub/release-96/fasta/rattus_norvegicus/dna/Rattus_norvegicus.Rnor_6.0.dna.chromosome.7.fa.gz ftp://ftp.ensembl.org/pub/release-96/fasta/rattus_norvegicus/dna/Rattus_norvegicus.Rnor_6.0.dna.chromosome.8.fa.gz ftp://ftp.ensembl.org/pub/release-96/fasta/rattus_norvegicus/dna/Rattus_norvegicus.Rnor_6.0.dna.chromosome.9.fa.gz ftp://ftp.ensembl.org/pub/release-96/fasta/rattus_norvegicus/dna/Rattus_norvegicus.Rnor_6.0.dna.chromosome.10.fa.gz ftp://ftp.ensembl.org/pub/release-96/fasta/rattus_norvegicus/dna/Rattus_norvegicus.Rnor_6.0.dna.chromosome.11.fa.gz ftp://ftp.ensembl.org/pub/release-96/fasta/rattus_norvegicus/dna/Rattus_norvegicus.Rnor_6.0.dna.chromosome.12.fa.gz ftp://ftp.ensembl.org/pub/release-96/fasta/rattus_norvegicus/dna/Rattus_norvegicus.Rnor_6.0.dna.chromosome.13.fa.gz ftp://ftp.ensembl.org/pub/release-96/fasta/rattus_norvegicus/dna/Rattus_norvegicus.Rnor_6.0.dna.chromosome.14.fa.gz ftp://ftp.ensembl.org/pub/release-96/fasta/rattus_norvegicus/dna/Rattus_norvegicus.Rnor_6.0.dna.chromosome.15.fa.gz ftp://ftp.ensembl.org/pub/release-96/fasta/rattus_norvegicus/dna/Rattus_norvegicus.Rnor_6.0.dna.chromosome.16.fa.gz ftp://ftp.ensembl.org/pub/release-96/fasta/rattus_norvegicus/dna/Rattus_norvegicus.Rnor_6.0.dna.chromosome.17.fa.gz ftp://ftp.ensembl.org/pub/release-96/fasta/rattus_norvegicus/dna/Rattus_norvegicus.Rnor_6.0.dna.chromosome.18.fa.gz ftp://ftp.ensembl.org/pub/release-96/fasta/rattus_norvegicus/dna/Rattus_norvegicus.Rnor_6.0.dna.chromosome.19.fa.gz ftp://ftp.ensembl.org/pub/release-96/fasta/rattus_norvegicus/dna/Rattus_norvegicus.Rnor_6.0.dna.chromosome.20.fa.gz
+
+gunzip -c Rattus_norvegicus.Rnor_6.0.96.gtf.gz > Rattus_norvegicus.gtf
+
+gunzip -c Rattus_norvegicus.Rnor_6.0.dna.chromosome.1.fa.gz > chrm_1.fa
+gunzip -c Rattus_norvegicus.Rnor_6.0.dna.chromosome.10.fa.gz > chrm_10.fa
+gunzip -c Rattus_norvegicus.Rnor_6.0.dna.chromosome.11.fa.gz > chrm_11.fa
+gunzip -c Rattus_norvegicus.Rnor_6.0.dna.chromosome.12.fa.gz > chrm_12.fa
+gunzip -c Rattus_norvegicus.Rnor_6.0.dna.chromosome.13.fa.gz > chrm_13.fa
+gunzip -c Rattus_norvegicus.Rnor_6.0.dna.chromosome.14.fa.gz > chrm_14.fa
+gunzip -c Rattus_norvegicus.Rnor_6.0.dna.chromosome.15.fa.gz > chrm_15.fa
+gunzip -c Rattus_norvegicus.Rnor_6.0.dna.chromosome.16.fa.gz > chrm_16.fa
+gunzip -c Rattus_norvegicus.Rnor_6.0.dna.chromosome.17.fa.gz > chrm_17.fa
+gunzip -c Rattus_norvegicus.Rnor_6.0.dna.chromosome.18.fa.gz > chrm_18.fa
+gunzip -c Rattus_norvegicus.Rnor_6.0.dna.chromosome.19.fa.gz > chrm_19.fa
+gunzip -c Rattus_norvegicus.Rnor_6.0.dna.chromosome.2.fa.gz > chrm_2.fa
+gunzip -c Rattus_norvegicus.Rnor_6.0.dna.chromosome.20.fa.gz > chrm_20.fa
+gunzip -c Rattus_norvegicus.Rnor_6.0.dna.chromosome.3.fa.gz > chrm_3.fa
+gunzip -c Rattus_norvegicus.Rnor_6.0.dna.chromosome.4.fa.gz > chrm_4.fa
+gunzip -c Rattus_norvegicus.Rnor_6.0.dna.chromosome.5.fa.gz > chrm_5.fa
+gunzip -c Rattus_norvegicus.Rnor_6.0.dna.chromosome.6.fa.gz > chrm_6.fa
+gunzip -c Rattus_norvegicus.Rnor_6.0.dna.chromosome.7.fa.gz > chrm_7.fa
+gunzip -c Rattus_norvegicus.Rnor_6.0.dna.chromosome.8.fa.gz > chrm_8.fa
+gunzip -c Rattus_norvegicus.Rnor_6.0.dna.chromosome.9.fa.gz > chrm_9.fa
+
+#Index constuction
+hisat2-build chrm_1.fa,chrm_2.fa,chrm_3.fa,chrm_4.fa,chrm_5.fa,chrm_6.fa,chrm_7.fa,chrm_8.fa,chrm_9.fa,chrm_10.fa,chrm_11.fa,chrm_12.fa,chrm_13.fa,chrm_14.fa,chrm_5.fa,chrm_16.fa,chrm_17.fa,chrm_18.fa,chrm_19.fa,chrm_20.fa Rattus_norvegicus_index
+
+#Extracting splice sites from GTF annotation file
+extract_splice_sites.py Rattus_norvegicus.gtf > Rattus_norvegicus_splice_sites.txt
+
+#Mapping
+hisat2 -x Rattus_norvegicus_index --known-splicesite-infile Rattus_norvegicus_splice_sites.txt -p 8 -U ERR2930315.fastq -S  ERR2930315.sam -t
+
+hisat2 -x Rattus_norvegicus_index --known-splicesite-infile Rattus_norvegicus_splice_sites.txt -p 8 -U ERR2930316.fastq -S  ERR2930316.sam -t
+
+hisat2 -x Rattus_norvegicus_index --known-splicesite-infile Rattus_norvegicus_splice_sites.txt -p 8 -U ERR2930317.fastq -S  ERR2930317.sam -t
+
+hisat2 -x Rattus_norvegicus_index --known-splicesite-infile Rattus_norvegicus_splice_sites.txt -p 8 -U ERR2930318.fastq -S  ERR2930318.sam -t
+
+hisat2 -x Rattus_norvegicus_index --known-splicesite-infile Rattus_norvegicus_splice_sites.txt -p 8 -U ERR2930319.fastq -S  ERR2930319.sam -t
+
+hisat2 -x Rattus_norvegicus_index --known-splicesite-infile Rattus_norvegicus_splice_sites.txt -p 8 -U ERR2930320.fastq -S  ERR2930320.sam -t
+
+#Read count with HT-Seq
+htseq-count ERR2930315.sam Rattus_norvegicus.gtf > ERR2930315_results.txt
+
+htseq-count ERR2930316.sam Rattus_norvegicus.gtf > ERR2930316_results.txt
+
+htseq-count ERR2930317.sam Rattus_norvegicus.gtf > ERR2930317_results.txt
+
+htseq-count ERR2930318.sam Rattus_norvegicus.gtf > ERR2930318_results.txt
+
+htseq-count ERR2930319.sam Rattus_norvegicus.gtf > ERR2930319_results.txt
+
+htseq-count ERR2930320.sam Rattus_norvegicus.gtf > ERR2930320_results.txt
+
+#table construction
+
+R --vanilla << EOF
+
+read_counts = read.table("ERR2930315_results.txt", sep="\t", header=FALSE)
+ERR2930316 = read.table("ERR2930316_results.txt", sep="\t", header=FALSE)
+ERR2930317 = read.table("ERR2930317_results.txt", sep="\t", header=FALSE)
+ERR2930318 = read.table("ERR2930318_results.txt", sep="\t", header=FALSE)
+ERR2930319 = read.table("ERR2930319_results.txt", sep="\t", header=FALSE)
+ERR2930320 = read.table("ERR2930320_results.txt", sep="\t", header=FALSE)
+
+#rownames(read_counts)=read_counts[,1]
+#read_counts = read_counts[,-1]
+
+read_counts=cbind(read_counts, ERR2930316[,2])
+read_counts=cbind(read_counts, ERR2930317[,2])
+read_counts=cbind(read_counts, ERR2930318[,2])
+read_counts=cbind(read_counts, ERR2930319[,2])
+read_counts=cbind(read_counts, ERR2930320[,2])
+
+rownames(read_counts)=read_counts[,1]
+read_counts=read_counts[,-1]
+
+colnames(read_counts)=as.character(c( "ERR2930315", "ERR2930316", "ERR2930317","ERR2930318","ERR2930319","ERR2930320"))
+
+read_count2=read_counts[1:32883,]
+
+write.table(read_count2, file="read_counts_results.tsv", sep="\t")
+
+EOF
+
+  

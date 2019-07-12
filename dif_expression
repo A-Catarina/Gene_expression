@@ -1,0 +1,56 @@
+#!/bin/bash
+
+#./read_count
+
+#wget https://www.ebi.ac.uk/gxa/experiments-content/E-MTAB-7438/resources/ExperimentDesignFile.RnaSeq/experiment-design
+
+#wget https://www.ebi.ac.uk/gxa/experiments-content/E-MTAB-7438/resources/DifferentialSecondaryDataFiles.RnaSeq/raw-counts
+
+R --vanilla << EOF
+
+library("DESeq2")
+
+
+ed=read.table("experiment-design", sep="\t", header=TRUE)
+reads=read.table("read_counts_results.tsv", sep="\t", header=TRUE)
+
+#barplot of the read cunts per sample, per condition
+normal=ed\$Run[ed\$Factor.Value.compound. == 'none']
+cols=rep("grey", ncol(reads))
+cols[colnames(reads)%in%normal] = "black"
+png("barplot.png")
+barplot(colSums(reads), col=cols, las=2, ylab="counts")
+dev.off()
+
+#differential expression analysis
+coldata=ed[,16, drop=FALSE]
+rownames(coldata)=as.character(ed[,1])
+colnames(coldata)[1]="condition"
+dds=DESeqDataSetFromMatrix(countData=reads, colData=coldata, design=~condition)
+
+keep=rowSums(counts(dds)) >= 30
+dds=dds[keep,]
+
+dds\$condition = relevel(dds\$condition, ref= "none")
+
+dds = DESeq(dds)
+
+res=results(dds, alpha=0.05, independentFiltering=TRUE)
+resOrdered = res[order(res\$padj),]
+png("log2FoldChange_dist.png")
+plotMA(res, ylim=c(-6,6))
+dev.off()
+
+summary(res)
+sum(res\$padj < 0.05, na.rm=TRUE)
+
+#determining the number of genes with padj<0.05 and log2FoldChange >1
+raw=read.csv("raw-counts", sep="\t", header=TRUE)
+dif=subset(res, padj < 0.05 & abs(log2FoldChange) >1)
+gene_name=subset(raw, Gene.ID %in% rownames(dif))[2]
+gene_name
+
+write.csv(as.data.frame(resOrdered), file="dif_exp_results.tsv")
+
+EOF
+
